@@ -1,0 +1,1 @@
+%Kent Wellington Data? #Apple 3.5 7 #Banana 5.5 7 #Ginger 1.2 1 #Onion 2.1 2 #Orange 7.5 3 
