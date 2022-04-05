@@ -1,6 +1,6 @@
 #include <iostream>
 
-/* Excercise 8
+/* Excercise 9
 * 
 	Define an Order class with (customer) name, address, data, and
 	vector<Purchase> members. Purchase is a class with a (product) name,
@@ -14,7 +14,17 @@
 * 
 */
 
+using namespace std;
+
 int main()
 {
-	
+	try
+	{
+
+	}
+
+	catch (...)
+	{
+		cout << "Cought unknown exception!\n";
+	}
 }
