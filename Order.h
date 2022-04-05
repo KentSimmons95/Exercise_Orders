@@ -1,6 +1,8 @@
 #pragma once
-#include <string>
 #include <vector>
+#include <iostream>
+#include <fstream>
+#include <string>
 /*
 *
 	Define a mechanism for reading and
@@ -44,11 +46,13 @@ public:
 	Order(string name, string address, string data, vector<Purchase> purchases)
 		:n(name), a(address), d(data), p(purchases)
 	{
-
+		
 	}
 
 	string name() { return n; };
 	string address() { return a; };
 	string data() { return d; };
 	vector<Purchase> purchases() { return p; };
+
+	void export_order(const string& fn);
 };

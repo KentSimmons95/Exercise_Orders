@@ -1,5 +1,5 @@
 #include <iostream>
-
+#include "Order.h"
 /* Excercise 9
 * 
 	Define an Order class with (customer) name, address, data, and
@@ -20,7 +20,23 @@ int main()
 {
 	try
 	{
+		const string filename = "orders.txt";
+		//Test Data
+		Purchase item1("Apple", 3.50, 7);
+		Purchase item2("Banana", 5.50, 7);
+		Purchase item3("Ginger", 1.20, 1);
+		Purchase item4("Onion", 2.10, 2);
+		Purchase item5("Orange", 7.50, 3);
 
+		vector<Purchase> vegetables;
+		vegetables.push_back(item1);
+		vegetables.push_back(item2);
+		vegetables.push_back(item3);
+		vegetables.push_back(item4);
+		vegetables.push_back(item5);
+
+		Order order1("Kent", "Wellington", "Data?", vegetables);
+		order1.export_order(filename);
 	}
 
 	catch (...)
