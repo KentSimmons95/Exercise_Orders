@@ -19,9 +19,9 @@ int main()
 		file_populate();
 				
 		vector<Order> currentorders = import_orders(filename);
-		
-		cout << endl << "Printing imported order\n";
 
+		sort_orders(currentorders);
+		cout << endl << "Printing sorted orders\n";
 		print_orders(currentorders);
 	}
 	catch (...)

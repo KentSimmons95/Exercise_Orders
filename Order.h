@@ -44,6 +44,15 @@ public:
 	{
 		
 	}
+	//Default Constructor
+	Order() 
+	{
+		n = "";
+		a = "";
+		i = 0;
+		p = vector<Purchase>();
+	}
+
 	//Copy Constructor
 	Order(const Order& o1) { n = o1.n; a = o1.a; i = o1.i; p = o1.p; };
 

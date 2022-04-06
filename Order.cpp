@@ -100,7 +100,20 @@ vector<Order> import_orders(const string& fn)
 
 vector<Order> sort_orders(vector<Order>& vo)
 {
-	Order temp();
+	Order temp;
+	for (int i = 0; i < vo.size(); ++i)
+	{
+		for (int j = 0; j < vo.size(); ++j)
+		{
+			if (vo[i].name() < vo[j].name())
+			{
+				temp = vo[j];
+				vo[j] = vo[i];
+				vo[i] = temp;
+			}
+		}
+	}
+	return vo;
 }
 
 void print_orders(vector<Order>& o)
