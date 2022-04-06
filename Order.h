@@ -3,12 +3,9 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+
 /*
-*
-	Create another file of at least ten Orders of which about a third are the same as in the first
-	file, read it into a list<Order>, sort it by address (of customer), and write
-	it back out to a file. Merge the two files into a third using std::merge().
-*
+	Go back to page 800 for other questions
 */
 using namespace std;
 
@@ -68,4 +65,4 @@ vector<Order> sort_orders(vector<Order>& vo);
 void print_orders(vector<Order>& o);
 void clean_file(const string& fn);
 void file_populate();
-void file_populate_vector(vector<Order>& o);
+void file_populate_vector(vector<Order>& o);1
