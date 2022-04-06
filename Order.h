@@ -5,8 +5,7 @@
 #include <string>
 /*
 *
-	sort it by name (of customer), and write it back out to a file. Create another
-	file of at least ten Orders of which about a third are the same as in the first
+	Create another file of at least ten Orders of which about a third are the same as in the first
 	file, read it into a list<Order>, sort it by address (of customer), and write
 	it back out to a file. Merge the two files into a third using std::merge().
 *
@@ -44,6 +43,17 @@ public:
 	{
 		
 	}
+	//Default Constructor
+	Order() 
+	{
+		n = "";
+		a = "";
+		i = 0;
+		p = vector<Purchase>();
+	}
+
+	//Copy Constructor
+	Order(const Order& o1) { n = o1.n; a = o1.a; i = o1.i; p = o1.p; };
 
 	string name() { return n; };
 	string address() { return a; };
@@ -54,5 +64,8 @@ public:
 };
 
 vector<Order> import_orders(const string& fn);
+vector<Order> sort_orders(vector<Order>& vo);
 void print_orders(vector<Order>& o);
+void clean_file(const string& fn);
 void file_populate();
+void file_populate_vector(vector<Order>& o);

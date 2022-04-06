@@ -6,8 +6,7 @@
 #include "Order.h"
 
 /*
-	sort it by name (of customer), and write it back out to a file. Create another
-	file of at least ten Orders of which about a third are the same as in the first
+	Create another file of at least ten Orders of which about a third are the same as in the first
 	file, read it into a list<Order>, sort it by address (of customer), and write
 	it back out to a file. Merge the two files into a third using std::merge().
 */
@@ -98,9 +97,35 @@ vector<Order> import_orders(const string& fn)
 	return orders;
 }
 
+vector<Order> sort_orders(vector<Order>& vo)
+{
+	Order temp;
+	for (int i = 0; i < vo.size(); ++i)
+	{
+		for (int j = 0; j < vo.size(); ++j)
+		{
+			if (vo[i].name() < vo[j].name())
+			{
+				temp = vo[j];
+				vo[j] = vo[i];
+				vo[i] = temp;
+			}
+		}
+	}
+	return vo;
+}
+
 void print_orders(vector<Order>& o)
 {
 	cout << o;
+}
+
+//Quick file cleanup between operations
+void clean_file(const string& fn)
+{
+	ofstream ofs;
+	ofs.open(fn, ofstream::out, ofstream::trunc);
+	ofs.close();
 }
 
 //File setup 
@@ -205,6 +230,16 @@ void file_populate()
 	orders.push_back(order7);
 
 	for (auto& x : orders)
+	{
+		x.export_order(filename);
+	}
+}
+
+void file_populate_vector(vector<Order>& o)
+{
+	const string filename = "orders.txt";
+
+	for (auto& x : o)
 	{
 		x.export_order(filename);
 	}
