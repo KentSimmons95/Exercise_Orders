@@ -44,6 +44,8 @@ public:
 	{
 		
 	}
+	//Copy Constructor
+	Order(const Order& o1) { n = o1.n; a = o1.a; i = o1.i; p = o1.p; };
 
 	string name() { return n; };
 	string address() { return a; };
@@ -54,5 +56,6 @@ public:
 };
 
 vector<Order> import_orders(const string& fn);
+vector<Order> sort_orders(vector<Order>& vo);
 void print_orders(vector<Order>& o);
 void file_populate();

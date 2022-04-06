@@ -98,6 +98,11 @@ vector<Order> import_orders(const string& fn)
 	return orders;
 }
 
+vector<Order> sort_orders(vector<Order>& vo)
+{
+	Order temp();
+}
+
 void print_orders(vector<Order>& o)
 {
 	cout << o;
