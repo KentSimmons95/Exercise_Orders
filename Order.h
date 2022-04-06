@@ -5,8 +5,6 @@
 #include <string>
 /*
 *
-	Define a mechanism for reading and
-	writing Orders to and from a file. Define a mechanism for printing Orders.
 	Create a file of at least ten Orders, read it into a vector<Order>, sort
 	it by name (of customer), and write it back out to a file. Create another
 	file of at least ten Orders of which about a third are the same as in the first
