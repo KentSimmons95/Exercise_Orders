@@ -16,7 +16,6 @@
 */
 using namespace std;
 
-
 class Purchase {
 	string n;
 	double p;
@@ -38,21 +37,24 @@ public:
 class Order {
 	string n;
 	string a;
-	string d;
+	int i;
 	vector<Purchase> p;
 
 public:
 
-	Order(string name, string address, string data, vector<Purchase> purchases)
-		:n(name), a(address), d(data), p(purchases)
+	Order(string name, string address, int items, vector<Purchase> purchases)
+		:n(name), a(address), i(items), p(purchases)
 	{
 		
 	}
 
 	string name() { return n; };
 	string address() { return a; };
-	string data() { return d; };
+	int data() { return i; };
 	vector<Purchase> purchases() { return p; };
 
 	void export_order(const string& fn);
+	vector<Order> import_orders(const string& fn);
 };
+
+void print_orders(vector<Order>& o);

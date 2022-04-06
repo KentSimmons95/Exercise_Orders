@@ -35,8 +35,14 @@ int main()
 		vegetables.push_back(item4);
 		vegetables.push_back(item5);
 
-		Order order1("Kent", "Wellington", "Data?", vegetables);
+		Order order1("Kent", "Wellington", 5, vegetables);
 		order1.export_order(filename);
+
+		vector<Order> currentorders = order1.import_orders(filename);
+		
+		cout << endl << "Printing imported order\n";
+
+		print_orders(currentorders);
 	}
 
 	catch (...)
