@@ -1,6 +1,7 @@
 #include <vector>
 #include <iostream>
 #include <fstream>
+#include <sstream>
 #include <string>
 #include "Order.h"
 
@@ -17,7 +18,7 @@
 //--------Helper Functions------------
 ostream& operator<<(ostream& os, Purchase& p)
 {
-	os << "#" << p.item_name() << " " << p.item_price() << " " << p.item_count();
+	os << p.item_name() << " " << p.item_price() << " " << p.item_count();
 	return os;
 }
 
@@ -32,17 +33,76 @@ ostream& operator<<(ostream& os, vector<Purchase> vp)
 
 ostream& operator<<(ostream& os, Order& o)
 {
-	os << "%" << o.name() << " " << o.address() << " " << o.data() << " " << o.purchases() << endl;
+	os << o.name() << " " << o.address() << " " << o.data() << " " << o.purchases() << endl;
 	return os;
 }
 
+ostream& operator<<(ostream& os, vector<Order>& o)
+{
+	for (auto& x : o)
+	{
+		cout << x;
+	}
+	return os;
+}
+
+
 //--------Order Functions------------
+
 void Order::export_order(const string& fn)
 {
 	Order* o = this;
-	ofstream ofile{ fn };
+	ofstream ofile;
+	ofile.open(fn, std::ios_base::app);
 	if (ofile.is_open())
 	{
-		ofile << *o;
+		ofile << "NewOrder\n" << *o;
 	}
+}
+
+//TODO Clean up?
+vector<Order> Order::import_orders(const string& fn)
+{
+	vector<Order> orders;
+	string line;
+
+	ifstream ifile{ fn };
+	//while (getline(ifile, line))
+	while (!ifile.eof())
+	{
+		const string new_order = "NewOrder";
+		string test;
+		
+		//read into temp variables
+		string cust_name, cust_addr, item_name;
+		double item_price;
+		int cust_items = 0;
+		int item_count = 0;
+		
+		vector<Purchase> cust_purch;
+		
+		getline(ifile, line);
+		istringstream iss(line);
+
+		cout << line << endl;
+
+		if (line != new_order)
+		{
+			iss >> cust_name >> cust_addr >> cust_items;
+			for (int i = 0; i < cust_items; ++i)
+			{
+				iss >> item_name >> item_price >> item_count;
+				Purchase item(item_name, item_price, item_count);
+				cust_purch.push_back(item);
+			}
+			Order current_order(cust_name, cust_addr, cust_items, cust_purch);
+			orders.push_back(current_order);
+		}
+	}
+	return orders;
+}
+
+void print_orders(vector<Order>& o)
+{
+	cout << o;
 }
