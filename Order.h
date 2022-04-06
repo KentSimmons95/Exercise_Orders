@@ -67,4 +67,6 @@ public:
 vector<Order> import_orders(const string& fn);
 vector<Order> sort_orders(vector<Order>& vo);
 void print_orders(vector<Order>& o);
+void clean_file(const string& fn);
 void file_populate();
+void file_populate_vector(vector<Order>& o);

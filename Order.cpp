@@ -121,6 +121,14 @@ void print_orders(vector<Order>& o)
 	cout << o;
 }
 
+//Quick file cleanup between operations
+void clean_file(const string& fn)
+{
+	ofstream ofs;
+	ofs.open(fn, ofstream::out, ofstream::trunc);
+	ofs.close();
+}
+
 //File setup 
 void file_populate()
 {
@@ -223,6 +231,16 @@ void file_populate()
 	orders.push_back(order7);
 
 	for (auto& x : orders)
+	{
+		x.export_order(filename);
+	}
+}
+
+void file_populate_vector(vector<Order>& o)
+{
+	const string filename = "orders.txt";
+
+	for (auto& x : o)
 	{
 		x.export_order(filename);
 	}
