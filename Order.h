@@ -52,7 +52,8 @@ public:
 	vector<Purchase> purchases() { return p; };
 
 	void export_order(const string& fn);
-	vector<Order> import_orders(const string& fn);
 };
 
+vector<Order> import_orders(const string& fn);
 void print_orders(vector<Order>& o);
+void file_populate();
